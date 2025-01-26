@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Exam Results</title>
+    <link rel="stylesheet" href="../static/css/bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center text-primary">📊 Upload Exam Results</h1>
+        <p class="text-center text-muted">Analyze and visualize student results with insightful metrics and graphs.</p>
+        <form action="/analyze" method="POST" enctype="multipart/form-data" class="mt-4">
+            <div class="mb-3">
+                <label for="file" class="form-label">Choose CSV File</label>
+                <input type="file" name="file" id="file" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-success w-100">Analyze Results</button>
+        </form>
+    </div>
+    <script src="../static/css/bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

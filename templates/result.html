@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Results Analysis</title>
+    <link rel="stylesheet" href="../static/css/bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center text-primary">📈 Exam Results Analysis</h1>
+        <p class="text-center text-muted">Below is the statistical analysis of the uploaded results.</p>
+        
+        <div class="mt-4">
+            <h3>Summary:</h3>
+            <ul class="list-group">
+                {% for key, value in analysis.items() %}
+                <li class="list-group-item">
+                    <strong>{{ key }}:</strong> 
+                    {% if value is mapping %}
+                    <ul>
+                        {% for subkey, subvalue in value.items() %}
+                        <li>{{ subkey }}: {{ subvalue }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    {{ value }}
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <a href="/" class="btn btn-secondary mt-3 mb-3">Upload Another File</a>
+    </div>
+    <script src="../static/css/bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
