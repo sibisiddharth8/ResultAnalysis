@@ -17,8 +17,13 @@ def analyze():
         return "No selected file!", 400
 
     try:
-        # Read CSV file into a DataFrame
-        df = pd.read_csv(file)
+        # Check file type and read into DataFrame
+        if file.filename.endswith('.csv'):
+            df = pd.read_csv(file)
+        elif file.filename.endswith('.xlsx'):
+            df = pd.read_excel(file)
+        else:
+            return "Unsupported file type! Please upload a CSV or XLSX file.", 400
         
         # Normalize column headers
         df.columns = [col.strip().lower() for col in df.columns]
