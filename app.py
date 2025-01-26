@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request
 import pandas as pd
 
@@ -24,7 +25,7 @@ def analyze():
             df = pd.read_excel(file)
         else:
             return "Unsupported file type! Please upload a CSV or XLSX file.", 400
-        
+
         # Normalize column headers
         df.columns = [col.strip().lower() for col in df.columns]
 
@@ -66,11 +67,13 @@ def analyze():
             "Subject-wise Pass Counts": subject_pass_counts.to_dict(),
             "Subject-wise Fail Counts": subject_fail_counts.to_dict()
         }
-        
+
         return render_template('result.html', analysis=analysis)
 
     except Exception as e:
         return f"An error occurred: {str(e)}", 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=False)
+    # Try using a dynamic port if the default one is in use
+    port = int(os.getenv("PORT", 5000))  # Get PORT from environment, default to 5000
+    app.run(host='0.0.0.0', port=port, debug=False)
