@@ -74,6 +74,4 @@ def analyze():
         return f"An error occurred: {str(e)}", 500
 
 if __name__ == '__main__':
-    # Try using a dynamic port if the default one is in use
-    port = int(os.getenv("PORT", 5000))  # Get PORT from environment, default to 5000
-    app.run(host='0.0.0.0', port=port, debug=False)
+    app.run(host='0.0.0.0')
